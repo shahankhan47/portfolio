@@ -35,7 +35,11 @@ export default function AboutPage() {
           duration: 1,
           ease: "power3.out",
           onStart: () => {
-            setActiveSection(index)},
+            setActiveSection(index)
+          },
+          onReverseComplete: () => {
+            setActiveSection(index - 1)
+          },
         });
 
         if (index !== sections.length - 1) {
@@ -49,6 +53,21 @@ export default function AboutPage() {
       });
     });
 
+    // Background text fade out
+    gsap.to("#backgroundHeading", {
+      opacity: 0,
+      transformOrigin: "center center",
+      duration: 1,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: "#aboutSection",    // or keep existing triggers if desired
+        start: "top top",               // start at top of projects section
+        endTrigger: ".about-stage",    // end when project cards appear
+        end: "top center",
+        scrub: 3,
+      },
+    });
+
     // Cleanup GSAP effects on unmount to prevent scroll locking
     return () => {
       ctx.revert();
@@ -58,15 +77,39 @@ export default function AboutPage() {
   return (
     <section
       id="about"
-      className="relative bg-white text-black min-h-screen overflow-hidden"
+      className="relative bg-white text-white min-h-screen overflow-hidden -z-20"
     >
+      {/* Background Video */}
+      <video
+        className="fixed inset-0 w-full h-full object-cover -z-10"
+        src="/videos/background.mp4" // replace with your actual video path
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
+      {/* Optional overlay for better text readability */}
+      <div className="fixed inset-0 bg-black/50 -z-5"></div>
       {/* Sticky heading */}
-      <h2 className="sticky top-10 text-6xl font-bold text-black text-center z-0">
-        About Me
-      </h2>
+      <div id="backgroundHeading">
+        <ReactTyped
+          strings={["Some details dummy about my life and journey"]}
+          typeSpeed={25}
+          backSpeed={0}
+          showCursor={false}
+          loop
+          cursorChar="|"
+          startDelay={50}
+          className="absolute inset-0
+             flex items-top top-30 justify-bottom 
+             text-white text-[6rem] font-extrabold 
+             z-0 pointer-events-none text-center"
+        />
+      </div>
 
       {/* Pinned scroll container */}
-      <div className="about-container relative z-10 h-screen w-full flex items-center justify-center">
+      <div id="aboutSection" className="about-container relative z-10 h-screen w-full flex items-center justify-center">
         {[ // Data-driven mapping to reduce repetition
           {
             imgSrc: "/images/about/school.jpg",
@@ -91,7 +134,7 @@ export default function AboutPage() {
         ].map(({ imgSrc, alt, text }, i) => (
           <div
             key={i}
-            className="about-stage absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+            className={`about-stage absolute inset-0 flex flex-col items-center justify-center text-center px-4 ${activeSection === i ? "active" : ""}`}
           >
             <div className="about-image-card">
               <img
@@ -100,7 +143,7 @@ export default function AboutPage() {
                 className="about-image w-140 mb-6 max-w-full h-auto"
               />
             </div>
-            <div className="about-text text-xl text-black max-w-2xl">
+            <div className="about-text text-xl text-white max-w-2xl">
               {activeSection === i && (
                 <ReactTyped
                   key={`typed-${activeSection}`}

@@ -1,9 +1,53 @@
 "use client";
 import { useEffect } from "react";
 import gsap from "gsap";
+import {ReactTyped} from "react-typed";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const projects = [
+  {
+    title: "Project 1",
+    description: "Earliest project details...",
+    top: 200,
+    align: "left", // match left-card or right side
+    typedStrings: [
+      "Typed text for Project 1.",
+      "More info here about Project 1.",
+    ],
+  },
+  {
+    title: "Project 2",
+    description: "Another cool project...",
+    top: 700,
+    align: "right",
+    typedStrings: [
+      "Typed text for Project 2.",
+      "Details continuing here.",
+    ],
+  },
+  {
+    title: "Project 3",
+    description: "Details of this one...",
+    top: 1200,
+    align: "left",
+    typedStrings: [
+      "Typed text for Project 3.",
+      "Additional info here.",
+    ],
+  },
+  {
+    title: "Project 4",
+    description: "Another cool project...",
+    top: 1800,
+    align: "right",
+    typedStrings: [
+      "Typed text for Project 4.",
+      "More details about Project 4 typed out.",
+    ],
+  },
+];
 
 export default function ProjectsPage() {
   useEffect(() => {
@@ -21,7 +65,7 @@ export default function ProjectsPage() {
     for (let i = 0; i < numFootprints; i++) {
       const footprint = document.createElement("div");
       footprint.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-4 h-4">
           <path d="M12 2C10 2 8 4 8 6s2 4 4 4 4-2 4-4-2-4-4-4zM6 9c-1.66 0-3 1.79-3 4s1.34 5 3 5 3-2.24 3-5-1.34-4-3-4zm12 0c-1.66 0-3 1.79-3 4s1.34 5 3 5 3-2.24 3-5-1.34-4-3-4zM12 12c-2 0-4 2.24-4 5s2 5 4 5 4-2.24 4-5-2-5-4-5z"/>
         </svg>
       `;
@@ -100,11 +144,16 @@ export default function ProjectsPage() {
     // Background text fade out
     gsap.to("#backgroundHeading", {
       opacity: 0,
+      scale: 0,
+      translate: 0,
+      transformOrigin: "center center",
+      duration: 1,
+      ease: "sine.in",
       scrollTrigger: {
-        // trigger: "#footprintsContainer",
-        // start: "center top",     // start fading when footprints begin
-        endTrigger: ".project-card", 
-        // end: "top center",       // fully gone by the time first card enters
+        trigger: "#projectsSection",    // or keep existing triggers if desired
+        start: "top top",               // start at top of projects section
+        endTrigger: ".project-card",    // end when project cards appear
+        end: "top center",
         scrub: 3,
       },
     });
@@ -148,13 +197,26 @@ export default function ProjectsPage() {
   return (
     <section
       id="projectsSection"
-      className="min-h-screen bg-gray-950 text-white relative p-10"
+      className="min-h-screen bg-white text-white relative p-10 -z-11"
     >
+      {/* Background Video */}
+      <video
+        className="fixed inset-0 w-full h-full object-cover -z-10"
+        src="/videos/background.mp4" // replace with your actual video path
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
+      {/* Optional overlay for better text readability */}
+      <div className="fixed inset-0 bg-black/50 -z-5"></div>
+
       {/* Background Heading */}
       <div
         id="backgroundHeading"
-        className="fixed
-             flex items-center top-50 justify-bottom 
+        className="absolute inset-0
+             flex items-top top-30 justify-bottom 
              text-white text-[6rem] font-extrabold 
              z-0 pointer-events-none text-center"
         style={{ whiteSpace: "pre-line" }}
@@ -164,7 +226,6 @@ export default function ProjectsPage() {
 
       {/* Title Card */}
       <div className="text-center mb-20 relative z-10">
-        <h2 className="text-6xl font-bold">My Projects</h2>
       </div>
 
       {/* Path guide */}
@@ -190,27 +251,43 @@ export default function ProjectsPage() {
           id="footprintsContainer"
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-full z-0"
         ></div>
-
         {/* Project Cards */}
-        <div className="absolute top-[200px] left-[20%] bg-gray-800 p-6 rounded-lg w-64 z-10 project-card left-card">
-          <h3 className="text-2xl font-bold">Project 1</h3>
-          <p className="text-sm text-gray-300">Earliest project details...</p>
-        </div>
+        {projects.map(({ title, description, top, align, typedStrings }, i) => {
+        // Determine horizontal positions
+        const cardLeft = align === "left" ? "left-[20%]" : "right-[20%]";
+        const typedLeft = align === "left" ? "right-[20%]" : "left-[20%]";
 
-        <div className="absolute top-[700px] right-[20%] bg-gray-800 p-6 rounded-lg w-64 z-10 project-card">
-          <h3 className="text-2xl font-bold">Project 2</h3>
-          <p className="text-sm text-gray-300">Another cool project...</p>
-        </div>
+        // Card CSS classes
+        const cardClassNames = `absolute top-[${top}px] ${cardLeft} bg-gray-800 p-6 rounded-lg w-64 z-10 project-card ${
+          align === "left" ? "left-card" : ""
+        }`;
 
-        <div className="absolute top-[1200px] left-[25%] bg-gray-800 p-6 rounded-lg w-64 z-10 project-card left-card">
-          <h3 className="text-2xl font-bold">Project 3</h3>
-          <p className="text-sm text-gray-300">Details of this one...</p>
-        </div>
+        // Typed text classes and styles
+        const typedClassNames = `absolute top-[${top}px] ${typedLeft} w-64 z-10 text-white project-card ${align === "left" ? "left-card" : ""}`;
 
-        <div className="absolute top-[1800px] right-[20%] bg-gray-800 p-6 rounded-lg w-64 z-10 project-card">
-          <h3 className="text-2xl font-bold">Project 4</h3>
-          <p className="text-sm text-gray-300">Another cool project...</p>
-        </div>
+        return (
+          <div key={i}>
+            {/* Project Card */}
+            <div className={cardClassNames}>
+              <h3 className="text-2xl text-white font-bold">{title}</h3>
+              <p className="text-sm text-gray-300">{description}</p>
+            </div>
+
+            {/* Typed Text */}
+            <div className={typedClassNames}>
+              <ReactTyped
+                strings={typedStrings}
+                typeSpeed={40}
+                backSpeed={30}
+                loop
+                showCursor={true}
+                cursorChar="|"
+                className="text-lg font-light"
+              />
+            </div>
+          </div>
+        );
+      })}
       </div>
     </section>
   );
