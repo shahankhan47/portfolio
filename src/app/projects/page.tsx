@@ -51,6 +51,7 @@ const projects = [
 
 export default function ProjectsPage() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     const path = document.querySelector("#footprintPath") as SVGPathElement;
     const container = document.querySelector(
       "#footprintsContainer"
@@ -144,11 +145,9 @@ export default function ProjectsPage() {
     // Background text fade out
     gsap.to("#backgroundHeading", {
       opacity: 0,
-      scale: 0,
-      translate: 0,
       transformOrigin: "center center",
       duration: 1,
-      ease: "sine.in",
+      ease: "power1.out",
       scrollTrigger: {
         trigger: "#projectsSection",    // or keep existing triggers if desired
         start: "top top",               // start at top of projects section
@@ -213,15 +212,20 @@ export default function ProjectsPage() {
       <div className="fixed inset-0 bg-black/50 -z-5"></div>
 
       {/* Background Heading */}
-      <div
-        id="backgroundHeading"
-        className="absolute inset-0
+      <div id="backgroundHeading">
+        <ReactTyped
+          strings={["Here are the projects I've worked on"]}
+          typeSpeed={25}
+          backSpeed={0}
+          showCursor={false}
+          loop
+          cursorChar="|"
+          startDelay={50}
+          className="absolute inset-0
              flex items-top top-30 justify-bottom 
              text-white text-[6rem] font-extrabold 
              z-0 pointer-events-none text-center"
-        style={{ whiteSpace: "pre-line" }}
-      >
-        Here are the projects I&apos;ve worked on
+        />
       </div>
 
       {/* Title Card */}
