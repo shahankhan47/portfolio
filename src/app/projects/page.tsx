@@ -183,11 +183,11 @@ export default function ProjectsPage() {
   return (
     <section
       id="projectsSection"
-      className="min-h-screen bg-white text-white relative p-10 -z-11"
+      className="min-h-screen bg-white text-white relative p-10"
     >
       {/* Background Video */}
       <video
-        className="fixed inset-0 w-full h-full object-cover -z-10"
+        className="fixed inset-0 w-full h-full object-cover"
         src="/videos/background.mp4" // replace with your actual video path
         autoPlay
         muted
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
       />
 
       {/* Optional overlay for better text readability */}
-      <div className="fixed inset-0 bg-black/50 -z-5"></div>
+      <div className="fixed inset-0 bg-black/50"></div>
 
       {/* Background Heading */}
       <div id="backgroundHeading">
@@ -259,7 +259,7 @@ export default function ProjectsPage() {
         };
 
         // Card CSS classes
-        const cardClassNames = `absolute bg-gray-800 p-6 rounded-lg w-64 z-10 project-card ${align === "left" ? "left-card" : ""}`;
+        const cardClassNames = `absolute bg-gray-800 p-6 rounded-lg w-64 z-10 project-card box-card ${align === "left" ? "left-card" : ""}`;
 
         // Typed text classes and styles
         const typedClassNames = `absolute w-64 z-10 text-white project-card ${align === "left" ? "left-card" : ""}`;

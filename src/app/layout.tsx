@@ -4,10 +4,10 @@ import Link from "next/link";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-800 text-white font-sans">
-        <header className="p-6 flex justify-between items-center">
-          <h1 className="text-xl font-bold">My Portfolio</h1>
-          <nav className="space-x-6">
+      <body className="bg-gray-800 text-white font-sans z-10">
+        <header className="p-6 flex justify-between items-center z-10">
+          <h1 className="text-xl font-bold z-10">My Portfolio</h1>
+          <nav className="space-x-6 z-10">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
             <Link href="/projects">Projects</Link>
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
         <main>{children}</main>
-        <footer className="p-6 text-center text-gray-400">© 2025 My Portfolio</footer>
+        <footer className="relative p-6 text-center text-gray-400 z-20">© 2025 My Portfolio</footer>
       </body>
     </html>
   );

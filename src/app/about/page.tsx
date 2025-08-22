@@ -100,11 +100,11 @@ export default function AboutPage() {
   return (
     <section
       id="about"
-      className="relative bg-white text-white min-h-screen overflow-hidden -z-20"
+      className="relative bg-white text-white min-h-screen overflow-hidden"
     >
       {/* Background Video */}
       <video
-        className="fixed inset-0 w-full h-full object-cover -z-10"
+        className="fixed inset-0 w-full h-full object-cover"
         src="/videos/background.mp4" // replace with your actual video path
         autoPlay
         muted
@@ -113,7 +113,7 @@ export default function AboutPage() {
       />
 
       {/* Optional overlay for better text readability */}
-      <div className="fixed inset-0 bg-black/50 -z-5"></div>
+      <div className="fixed inset-0 bg-black/50"></div>
       {/* Sticky heading */}
       <div id="backgroundHeading">
         <ReactTyped
