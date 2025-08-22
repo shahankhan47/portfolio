@@ -5,13 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,36 +12,26 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.footprint {
-  border-radius: 50% 50% 50% 50%;
-  transform: rotate(180deg);
-}
-
-.about-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
 .about-stage {
   position: absolute;
-  inset: 0; /* full container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
+  opacity: 0;               /* Hide initially */
+  transform: translateY(100px); /* Start offset */
+  pointer-events: none;     /* disable interaction */
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.about-stage.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 10;
 }
 
 .about-image-card {
-  /* Perspective and transform for 3D */
-  perspective: 1000px; /* Necessary for 3D space */
-  display: inline-block; /* Needed if wrapping */
+  position: relative;       /* Provide stacking context */
+  perspective: 1000px;
+  display: inline-block;
 }
 
 .about-image-card img.about-image {
@@ -62,9 +45,9 @@ body {
   will-change: transform;
   cursor: default;
   user-select: none;
+  z-index: 5
 }
 
-/* Hover effect to lift and rotate card simulating floating */
 .about-image-card img.about-image:hover {
   transform:
     translateY(-20px)
@@ -74,22 +57,5 @@ body {
   box-shadow:
     0 25px 45px rgba(0, 0, 0, 0.35),
     0 15px 15px rgba(0, 0, 0, 0.25);
-  z-index: 10; /* Bring forward on hover */
+  z-index: 10;
 }
-
-.about-stage {
-  position: absolute;
-  inset: 0;
-  pointer-events: none; /* disable pointer events by default */
-  transition: opacity 0.4s, transform 0.4s;
-}
-
-.about-stage.active {
-  pointer-events: auto; /* enable pointer events on active card */
-  z-index: 10;          /* bring active card to front */
-}
-
-.about-stage:nth-child(1) { z-index: 1; }
-.about-stage:nth-child(2) { z-index: 2; }
-.about-stage:nth-child(3) { z-index: 3; }
-.about-stage:nth-child(4) { z-index: 4; }

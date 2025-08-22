@@ -6,6 +6,29 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const aboutData = [
+  {
+    imgSrc: "/images/about/school.jpg",
+    alt: "Schooling",
+    text: "I began my journey with strong schooling foundations...",
+  },
+  {
+    imgSrc: "/images/about/bachelors.jpg",
+    alt: "Bachelors",
+    text: "Completed my Bachelors in Computer Science...",
+  },
+  {
+    imgSrc: "/images/about/masters.jpg",
+    alt: "Masters",
+    text: "Pursued Masters to deepen my expertise...",
+  },
+  {
+    imgSrc: "/images/about/hobbies.jpg",
+    alt: "Hobbies",
+    text: "Beyond work, I love music, gaming, and art.",
+  },
+]
+
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<number | null>(null);
   useEffect(() => {
@@ -110,28 +133,7 @@ export default function AboutPage() {
 
       {/* Pinned scroll container */}
       <div id="aboutSection" className="about-container relative z-10 h-screen w-full flex items-center justify-center">
-        {[ // Data-driven mapping to reduce repetition
-          {
-            imgSrc: "/images/about/school.jpg",
-            alt: "Schooling",
-            text: "I began my journey with strong schooling foundations...",
-          },
-          {
-            imgSrc: "/images/about/bachelors.jpg",
-            alt: "Bachelors",
-            text: "Completed my Bachelors in Computer Science...",
-          },
-          {
-            imgSrc: "/images/about/masters.jpg",
-            alt: "Masters",
-            text: "Pursued Masters to deepen my expertise...",
-          },
-          {
-            imgSrc: "/images/about/hobbies.jpg",
-            alt: "Hobbies",
-            text: "Beyond work, I love music, gaming, and art.",
-          },
-        ].map(({ imgSrc, alt, text }, i) => (
+        {aboutData.map(({ imgSrc, alt, text }, i) => (
           <div
             key={i}
             className={`about-stage absolute inset-0 flex flex-col items-center justify-center text-center px-4 ${activeSection === i ? "active" : ""}`}

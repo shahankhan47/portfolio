@@ -65,29 +65,16 @@ export default function ProjectsPage() {
 
     for (let i = 0; i < numFootprints; i++) {
       const footprint = document.createElement("div");
-      footprint.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-4 h-4">
-          <path d="M12 2C10 2 8 4 8 6s2 4 4 4 4-2 4-4-2-4-4-4zM6 9c-1.66 0-3 1.79-3 4s1.34 5 3 5 3-2.24 3-5-1.34-4-3-4zm12 0c-1.66 0-3 1.79-3 4s1.34 5 3 5 3-2.24 3-5-1.34-4-3-4zM12 12c-2 0-4 2.24-4 5s2 5 4 5 4-2.24 4-5-2-5-4-5z"/>
-        </svg>
-      `;
+      footprint.innerHTML = ".";
       footprint.className = "absolute opacity-0";
       container.appendChild(footprint);
 
       const lengthAtPoint = i * step;
       const position = path.getPointAtLength(lengthAtPoint);
-      const delta = 0.1;
-      const nextPoint = path.getPointAtLength(lengthAtPoint + delta);
-      const angle =
-        (Math.atan2(nextPoint.y - position.y, nextPoint.x - position.x) * 180) /
-          Math.PI +
-        180;
-
-      const offset = i % 2 === 0 ? -10 : 10;
 
       gsap.set(footprint, {
-        x: position.x - 12 + offset,
-        y: position.y - 12,
-        rotate: angle + 90,
+        x: position.x,
+        y: position.y,
       });
 
       footprints.push(footprint);
@@ -229,7 +216,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* Title Card */}
-      <div className="text-center mb-20 relative z-10">
+      <div className="text-center mb-100 relative z-10">
       </div>
 
       {/* Path guide */}
@@ -243,11 +230,12 @@ export default function ProjectsPage() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            id="footprintPath"
-            d="M200 0 C100 300, 300 600, 200 900 C100 1200, 300 1500, 200 2000"
-            stroke="none"
-            fill="none"
-          />
+          id="footprintPath"
+          d="M200 0
+            L200 2000"
+          stroke="none"
+          fill="none"
+        />
         </svg>
 
         {/* Footprints */}
@@ -258,27 +246,34 @@ export default function ProjectsPage() {
         {/* Project Cards */}
         {projects.map(({ title, description, top, align, typedStrings }, i) => {
         // Determine horizontal positions
-        const cardLeft = align === "left" ? "left-[20%]" : "right-[20%]";
-        const typedLeft = align === "left" ? "right-[20%]" : "left-[20%]";
+        const horizontalPosTyped = align === "left" ? { right: '20%' } : { left: '20%' };
+        const horizontalPosCard = align === "left" ? { left: '20%' } : { right: '20%' };
+        const cardStyles = {
+          top: `${top}px`,
+          ...horizontalPosCard,
+        };
+
+        const typedStyles = {
+          top: `${top}px`,
+          ...horizontalPosTyped,
+        };
 
         // Card CSS classes
-        const cardClassNames = `absolute top-[${top}px] ${cardLeft} bg-gray-800 p-6 rounded-lg w-64 z-10 project-card ${
-          align === "left" ? "left-card" : ""
-        }`;
+        const cardClassNames = `absolute bg-gray-800 p-6 rounded-lg w-64 z-10 project-card ${align === "left" ? "left-card" : ""}`;
 
         // Typed text classes and styles
-        const typedClassNames = `absolute top-[${top}px] ${typedLeft} w-64 z-10 text-white project-card ${align === "left" ? "left-card" : ""}`;
+        const typedClassNames = `absolute w-64 z-10 text-white project-card ${align === "left" ? "left-card" : ""}`;
 
         return (
           <div key={i}>
             {/* Project Card */}
-            <div className={cardClassNames}>
+            <div className={cardClassNames} style={cardStyles}>
               <h3 className="text-2xl text-white font-bold">{title}</h3>
               <p className="text-sm text-gray-300">{description}</p>
             </div>
 
             {/* Typed Text */}
-            <div className={typedClassNames}>
+            <div className={typedClassNames} style={typedStyles}>
               <ReactTyped
                 strings={typedStrings}
                 typeSpeed={40}
