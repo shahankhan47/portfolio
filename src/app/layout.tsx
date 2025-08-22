@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-gray-800 text-white font-sans z-10">
         <header className="p-6 flex justify-between items-center z-10">
-          <h1 className="text-xl font-bold z-10">My Portfolio</h1>
+          <h1 className="text-xl font-medium z-10">Shahan Ali Khan</h1>
           <nav className="space-x-6 z-10">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>

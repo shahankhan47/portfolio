@@ -10,22 +10,25 @@ const aboutData = [
   {
     imgSrc: "/images/about/school.jpg",
     alt: "Schooling",
-    text: "I began my journey with strong schooling foundations...",
+    text: `I completed my schooling from The Frank Anthony Public School, Kolkata. 
+    The year was 2014 and I scored 85% on my boards examinations`,
   },
   {
     imgSrc: "/images/about/bachelors.jpg",
     alt: "Bachelors",
-    text: "Completed my Bachelors in Computer Science...",
+    text: `Completed my Bachelors in Computer Science and Engineering from Maulana Abul Kalam Azad University of Technology (formerly
+    known as West Bengal University of Technology) getting a CGPA score of 7.1`,
   },
   {
     imgSrc: "/images/about/masters.jpg",
     alt: "Masters",
-    text: "Pursued Masters to deepen my expertise...",
+    text: `After graduation, I completed a few industrial trainings on Android Development as well as learnt the German language 
+    (A1 level) on my part time before I got a full time job. I also temporarily started learning 3d animation but had to leave that.`,
   },
   {
     imgSrc: "/images/about/hobbies.jpg",
     alt: "Hobbies",
-    text: "Beyond work, I love music, gaming, and art.",
+    text: "Beyond work, I love music, gaming, game development and singing. I also love spending time with friends and family.",
   },
 ]
 
@@ -117,16 +120,16 @@ export default function AboutPage() {
       {/* Sticky heading */}
       <div id="backgroundHeading">
         <ReactTyped
-          strings={["Some details dummy about my life and journey"]}
+          strings={["Here are some details about my life and journey"]}
           typeSpeed={25}
           backSpeed={0}
           showCursor={false}
           loop
           cursorChar="|"
           startDelay={50}
-          className="absolute inset-0
+          className="absolute inset-0 pl-50 pr-50
              flex items-top top-30 justify-bottom 
-             text-white text-[6rem] font-extrabold 
+             text-white text-[6rem] font-bold 
              z-0 pointer-events-none text-center"
         />
       </div>

@@ -8,43 +8,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "Project 1",
-    description: "Earliest project details...",
+    title: "Associate Consultant",
+    description: "Atos Syntel",
     top: 200,
     align: "left", // match left-card or right side
     typedStrings: [
-      "Typed text for Project 1.",
-      "More info here about Project 1.",
+      "JavaScript | Azure DevOps | MongoDB",
+      "October 2018 - November 2021",
     ],
   },
   {
-    title: "Project 2",
-    description: "Another cool project...",
+    title: "Software Engineer",
+    description: "Infogain",
     top: 700,
     align: "right",
     typedStrings: [
-      "Typed text for Project 2.",
-      "Details continuing here.",
+      "React | AWS | SQL",
+      "November 2021 - December 2022",
     ],
   },
   {
-    title: "Project 3",
-    description: "Details of this one...",
+    title: "FullStack Engineer",
+    description: "Thinkbridge Software",
     top: 1200,
     align: "left",
     typedStrings: [
-      "Typed text for Project 3.",
-      "Additional info here.",
+      "React | MongoDB | Python",
+      "January 2023 - March 2025",
     ],
   },
   {
-    title: "Project 4",
-    description: "Another cool project...",
+    title: "Senior Software Engineer",
+    description: "Thinkbridge Software",
     top: 1800,
     align: "right",
     typedStrings: [
-      "Typed text for Project 4.",
-      "More details about Project 4 typed out.",
+      "Python | FastApi | OpenAI | React | Postgres",
+      "March 2025 - Present",
     ],
   },
 ];
@@ -201,16 +201,16 @@ export default function ProjectsPage() {
       {/* Background Heading */}
       <div id="backgroundHeading">
         <ReactTyped
-          strings={["Here are the projects I've worked on"]}
+          strings={["My Career Timeline"]}
           typeSpeed={25}
           backSpeed={0}
           showCursor={false}
           loop
           cursorChar="|"
           startDelay={50}
-          className="absolute inset-0
+          className="absolute inset-0 pl-50 pr-50
              flex items-top top-30 justify-bottom 
-             text-white text-[6rem] font-extrabold 
+             text-white text-[6rem] font-bold 
              z-0 pointer-events-none text-center"
         />
       </div>
