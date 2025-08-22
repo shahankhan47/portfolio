@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.about-stage {
+  position: absolute;
+  inset: 0;
+  opacity: 0;               /* Hide initially */
+  transform: translateY(100px); /* Start offset */
+  pointer-events: none;     /* disable interaction */
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.about-stage.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.about-image-card {
+  position: relative;       /* Provide stacking context */
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.about-image-card img.about-image {
+  /* Base styles */
+  border-radius: 1rem; /* Rounded corners for nicer look */
+  box-shadow:
+    0 15px 25px rgba(0, 0, 0, 0.3),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  cursor: default;
+  user-select: none;
+  z-index: 5
+}
+
+.about-image-card img.about-image:hover {
+  transform:
+    translateY(-20px)
+    rotateX(8deg)
+    rotateY(8deg)
+    scale(1.05);
+  box-shadow:
+    0 25px 45px rgba(0, 0, 0, 0.35),
+    0 15px 15px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.box-card {
+  /* Base styles */
+  border-radius: 1rem; /* Rounded corners for nicer look */
+  box-shadow:
+    0 15px 25px rgba(0, 0, 0, 0.3),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  cursor: default;
+  user-select: none;
+  z-index: 5
+}
+
+.box-card:hover {
+  transform: translateY(-10px) scale(1.03) rotate3d(1, 1, 0, 5deg);
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.35),
+    0 15px 15px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(59, 130, 246, 0.4); /* soft blue glow */
+  z-index: 20; /* bring above neighbors when hovered */
+  cursor: pointer;
+}
