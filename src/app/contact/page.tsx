@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 
 // Reuse same card styling as projects.tsx
 const cardClassNames =
-  "box-card bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 text-white shadow-xl rounded-2xl transition-transform transform hover:scale-105 hover:shadow-2xl";
+  "box-card bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-xl rounded-2xl transition-transform transform hover:scale-105 hover:shadow-2xl";
 
 export default function ContactPage() {
   const contacts = [

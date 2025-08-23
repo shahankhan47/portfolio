@@ -259,7 +259,7 @@ export default function ProjectsPage() {
         };
 
         // Card CSS classes
-        const cardClassNames = `absolute bg-gray-800 p-6 rounded-lg w-64 z-10 project-card box-card ${align === "left" ? "left-card" : ""}`;
+        const cardClassNames = `absolute bg-gradient-to-br from-gray-900 to-gray-800 bg-gray-800 shadow-xl rounded-2xl transition-transform transform hover:scale-105 hover:shadow-2xl p-6 rounded-lg w-64 project-card box-card ${align === "left" ? "left-card" : ""}`;
 
         // Typed text classes and styles
         const typedClassNames = `absolute w-64 z-10 text-white project-card ${align === "left" ? "left-card" : ""}`;
