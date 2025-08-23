@@ -8,43 +8,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "Associate Consultant",
-    description: "Atos Syntel",
+    title: "Senior Software Engineer",
+    description: "Thinkbridge Software",
     top: 200,
-    align: "left", // match left-card or right side
+    align: "left",
     typedStrings: [
-      "JavaScript | Azure DevOps | MongoDB",
-      "October 2018 - November 2021",
-    ],
-  },
-  {
-    title: "Software Engineer",
-    description: "Infogain",
-    top: 700,
-    align: "right",
-    typedStrings: [
-      "React | AWS | SQL",
-      "November 2021 - December 2022",
+      "Python | FastApi | OpenAI | React | Postgres",
+      "March 2025 - Present",
     ],
   },
   {
     title: "FullStack Engineer",
     description: "Thinkbridge Software",
-    top: 1200,
-    align: "left",
+    top: 700,
+    align: "right",
     typedStrings: [
       "React | MongoDB | Python",
       "January 2023 - March 2025",
     ],
   },
   {
-    title: "Senior Software Engineer",
-    description: "Thinkbridge Software",
+    title: "Software Engineer",
+    description: "Infogain",
+    top: 1200,
+    align: "left",
+    typedStrings: [
+      "React | AWS | SQL",
+      "November 2021 - December 2022",
+    ],
+  },
+  {
+    title: "Associate Consultant",
+    description: "Atos Syntel",
     top: 1800,
     align: "right",
     typedStrings: [
-      "Python | FastApi | OpenAI | React | Postgres",
-      "March 2025 - Present",
+      "JavaScript | Azure DevOps | MongoDB",
+      "October 2018 - November 2021",
     ],
   },
 ];

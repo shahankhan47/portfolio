@@ -18,9 +18,11 @@ export default function HomePage() {
       <div className="fixed inset-0 bg-black/50"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-white">
-        <h1 className="text-6xl font-bold mb-4">Hi, I’m Shahan</h1>
-        <p className="text-2xl">
+      <div className="relative z-10 text-white px-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+          Hi, I’m Shahan
+        </h1>
+        <p className="text-lg sm:text-xl md:text-2xl">
           <ReactTyped
             strings={["Developer", "Designer", "Creator"]}
             typeSpeed={40}
@@ -29,7 +31,7 @@ export default function HomePage() {
             showCursor={false}
             cursorChar="|"
           />
-          </p>
+        </p>
       </div>
     </section>
   );

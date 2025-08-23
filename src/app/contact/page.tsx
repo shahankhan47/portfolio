@@ -12,32 +12,32 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-8 h-8 text-orange-400" />,
       title: "Email",
-      detail: "example@email.com",
+      detail: "prince47khan@gmail.com",
     },
     {
       icon: <Phone className="w-8 h-8 text-green-400" />,
       title: "Phone",
-      detail: "+1 234 567 890",
+      detail: "+91-9239999852",
     },
     {
       icon: <MapPin className="w-8 h-8 text-red-400" />,
       title: "Location",
-      detail: "New York, USA",
+      detail: "Kolkata, WB, India",
     },
     {
       icon: <Github className="w-8 h-8 text-black-400" />,
       title: "Github",
-      detail: "New York, USA",
+      detail: "github.com/shahankhan47",
     },
     {
       icon: <Instagram className="w-8 h-8 text-pink-600" />,
       title: "Instagram",
-      detail: "New York, USA",
+      detail: "instagram.com/khan_shahan47",
     },
     {
       icon: <Linkedin className="w-8 h-8 text-blue-400" />,
       title: "LinkedIn",
-      detail: "New York, USA",
+      detail: "linkedin.com/in/shahan-ali-khan-74a674170/",
     },
   ];
 

@@ -118,7 +118,8 @@ export default function AboutPage() {
       {/* Optional overlay for better text readability */}
       <div className="fixed inset-0 bg-black/50"></div>
       {/* Sticky heading */}
-      <div id="backgroundHeading">
+      <div id="backgroundHeading" className="absolute top-[2%] sm:top-[5%] flex items-center w-full px-40 justify-center pointer-events-none">
+        {/* "absolute top-1/4 left-1/2 transform -translate-x-1/2 z-0 pointer-events-none w-full px-4" */}
         <ReactTyped
           strings={["Here are some details about my life and journey"]}
           typeSpeed={25}
@@ -127,10 +128,11 @@ export default function AboutPage() {
           loop
           cursorChar="|"
           startDelay={50}
-          className="absolute inset-0 pl-50 pr-50
-             flex items-top top-30 justify-bottom 
-             text-white text-[6rem] font-bold 
-             z-0 pointer-events-none text-center"
+          className="
+            text-white font-bold text-center leading-tight
+            text-2xl sm:text-4xl md:text-6xl
+            px-4
+          "
         />
       </div>
 
